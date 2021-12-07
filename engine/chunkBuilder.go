@@ -2,8 +2,6 @@ package engine
 
 import (
 	"fmt"
-	"log"
-	"os"
 
 	"github.com/g3n/engine/core"
 	"github.com/g3n/engine/geometry"

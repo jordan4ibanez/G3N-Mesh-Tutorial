@@ -2,10 +2,7 @@ module github.com/jordan4ibanez/G3N-Mesh-Tutorial
 
 go 1.17
 
-require (
-	github.com/g3n/engine v0.2.0
-	github.com/jordan4ibanez/Crafter v0.0.0-20211207020642-918dd6de78ec
-)
+require github.com/g3n/engine v0.2.0
 
 require (
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20210410170116-ea3d685f79fb // indirect
