@@ -37,6 +37,7 @@ func main() {
 	cam.SetPosition(0, 0, 3)
 
 	//set orbital control for the camera
+	//this makes it so you can left click and drag the camera around a centered position
 	camera.NewOrbitControl(cam)
 
 	//finally add to scene node - inject pointer reference
