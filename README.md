@@ -103,14 +103,14 @@ This is why normals are very important.
 
 Now I know what you're thinking, UV as in UV light. But UV are actually the texture mapping. UV is a coordinate system like XYZ. In OpenGL when you hear the term UV, just think "texture map". This is a very simple way to sum that up, [but you can read about it here if you want to know more.](https://en.wikipedia.org/wiki/UV_mapping) I'm just going to use texture mapping from here on out, just know that I am referring to UVs.
 
-Texture mapping is one of the most essential parts of meshes. They allow you to do complex model wrapping to make your model look more detailed than it is. You can do some truly crazy things with texture mapping. But for our tutorial scenario, we have made a square that has a texture on it. [You can see this being applied to the geometry on line 66 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L66)
+Texture mapping is one of the most essential parts of meshes. They allow you to do complex model wrapping to make your model look more detailed than it is. You can do some truly crazy things with texture mapping. But for our tutorial scenario, we have made a square that has a texture on it. [You can see this being applied to the geometry on line 66 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L74)
 
 Something very important I would like to get out of the way first. The texture coordinate system on the Y axis (up and down) of the texure map is inverted. Left is 0, right is 1, up is 0, down is 1. Very simple, but this could get extremely confusing if you ever forget this.
 Hopefully this example helps explain what I mean.
 
 ![This guy was very happy to be drawn](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/flippedUVExample.png)
 
-You want your texture definition to start at Vertex Position 0 and end at 3. Basically make it so that it goes to the points in order, 0,1,2,3. You can see this on the line 66 link above. It goes from 0, to 3.
+You want your texture definition to start at Vertex Position 0 and end at 3. Basically make it so that it goes to the points in order, 0,1,2,3. You can see this on the line 66 link above. It goes from 0, to 3. If you mess up your UV mapping, you can keep brute forcing it if you really want to, it just becomes a pain in more complex programs to do this.
 
 
 
