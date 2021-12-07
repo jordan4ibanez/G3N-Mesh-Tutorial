@@ -9,8 +9,6 @@ import (
 	"github.com/g3n/engine/graphic"
 	"github.com/g3n/engine/math32"
 
-	//"github.com/g3n/engine/gls"
-	//"github.com/g3n/engine/graphic"
 	"github.com/g3n/engine/material"
 	"github.com/g3n/engine/texture"
 )
@@ -32,10 +30,10 @@ func DebugTest(scene *core.Node) {
 
 	//positions are the "dots" which make up the mesh's vertex layout - this is a square
 	positions.Append(
-		-0.5, 0.5, 0.0,
-		-0.5, -0.5, 0.0,
-		0.5, -0.5, 0.0,
-		0.5, 0.5, 0.0,
+		-0.5, 0.5, 0.0, //top left
+		-0.5, -0.5, 0.0, //bottom left
+		0.5, -0.5, 0.0, //bottom right
+		0.5, 0.5, 0.0, //top right
 	)
 	//indices are the "lines" which draw the connection between the vertex dots
 	//they are drawn as triangles, even to make quads for gpu optimizations
@@ -51,7 +49,7 @@ func DebugTest(scene *core.Node) {
 	//in this case, the "plane" (2 tris) are facing +Z
 	normals.Append(
 		0.0, 0.0, 1.0, //all face one direction (+Z coordinate on plane of Z); invert by switching to -1.0
-		0.0, 0.0, 1.0,
+		0.0, 0.0, 1.0, //this is used to optimize GPU calculations, otherwise known as backface culling
 		0.0, 0.0, 1.0,
 
 		0.0, 0.0, 1.0,
@@ -60,11 +58,16 @@ func DebugTest(scene *core.Node) {
 	)
 
 	//uv is the texture mapping
+	//this is a literal interpretation of the 2D texture that is in /textures/ from 0.0 to 1.0000~INF
+	//the y on the UV map is actually inverted of your normal coordinate instincts if you commonly work with higher level engines
+	//0 on the y is the top of the image
+	//1 on the y is the bottom of the image
+	//(y is the second float32 in this case)
 	uvs.Append(
-		0.0, 0.0,
-		0.0, 1.0,
-		1.0, 1.0,
-		1.0, 0.0,
+		0.0, 0.0, //top left
+		0.0, 1.0, //bottom left
+		1.0, 1.0, //bottom right
+		1.0, 0.0, //top right
 	)
 
 	//apply the geometric indice data to the geometry object
@@ -84,14 +87,18 @@ func DebugTest(scene *core.Node) {
 	//we are now moving into the material of the mesh
 
 	//create a blank material object - this NewBasic()Material object is able to intake textures
-	var myMaterial *material.Material = &material.NewBasic().Material
+	var myMaterial *material.Standard = material.NewStandard(math32.NewColor("White"))
 
 	//turns the 2D myTexture.png image in /textures/ into a texture that OpenGL understands
 	myTexture, error := texture.NewTexture2DFromImage("textures/myTexture.png")
 
+	//prints an error if there is one
 	if error != nil {
 		fmt.Println(error)
 	}
+
+	//this sets the texture filter to not "automatically smooth" and blur the texture, aka low poly voxel game look
+	myTexture.SetMagFilter(gls.NEAREST)
 
 	//we finally apply the texture to the material
 	myMaterial.AddTexture(myTexture)
@@ -103,6 +110,8 @@ func DebugTest(scene *core.Node) {
 
 	//finally we add the mesh into the scene
 	scene.Add(myMesh)
+
+	//if you do this a few million more times you have created Minetest
 }
 
 //this is a "getter" that the main.go file can use to import the myMesh object into

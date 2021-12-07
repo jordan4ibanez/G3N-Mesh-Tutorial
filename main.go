@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/g3n/engine/app"
@@ -9,17 +8,14 @@ import (
 	"github.com/g3n/engine/core"
 	"github.com/g3n/engine/gls"
 	"github.com/g3n/engine/gui"
-	"github.com/g3n/engine/light"
-	"github.com/g3n/engine/math32"
 	"github.com/g3n/engine/renderer"
+	"github.com/g3n/engine/util/helper"
 	"github.com/g3n/engine/window"
 
 	chunkBuilder "github.com/jordan4ibanez/G3N-Mesh-Tutorial/engine"
 )
 
 func main() {
-	fmt.Println("Wow Go is cool!")
-
 	//this creates the application - pointer reference
 	var a *app.Application = app.App()
 
@@ -45,6 +41,9 @@ func main() {
 	//this needs to be changed in the future
 	camera.NewOrbitControl(cam)
 
+	//create and add an axis helper to the scene
+	scene.Add(helper.NewAxes(0.5))
+
 	//a callback to update the viewport and camera aspect ratio when the window is resized
 	//var type is explicit instead of implicit for learning purposes and compilation speedup
 	var onResize (func(evname string, ev interface{})) = func(evname string, ev interface{}) {
@@ -65,15 +64,9 @@ func main() {
 	a.Gls().ClearColor(0.5, 0.5, 0.7, 1)
 
 	//this is the function that shows you how to create a mesh from scratch
+	//you can study this in /engine/meshBuilder.go
+	//we must pass the scene pointer to the function so it can allocate resources to it
 	chunkBuilder.DebugTest(scene)
-
-	//
-
-	scene.Add(light.NewAmbient(&math32.Color{1.0, 1.0, 1.0}, 0.8))
-
-	pointLight := light.NewPoint(&math32.Color{1, 1, 1}, 5.0)
-	pointLight.SetPosition(0, 0, 3)
-	scene.Add(pointLight)
 
 	a.Run(func(renderer *renderer.Renderer, deltaTime time.Duration) {
 		a.Gls().Clear(gls.DEPTH_BUFFER_BIT | gls.STENCIL_BUFFER_BIT | gls.COLOR_BUFFER_BIT)
