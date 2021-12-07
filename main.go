@@ -28,7 +28,7 @@ func main() {
 	//this creates the camera - pointer reference
 	var cam *camera.Camera = camera.New(1)
 
-	// camera is utilizing float32 (could cast 64 to 32 in future?)
+	// camera is utilizing float32
 	cam.SetPosition(0, 0, 3)
 
 	//set orbital control for the camera
