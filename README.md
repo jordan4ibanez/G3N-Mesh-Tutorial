@@ -67,6 +67,19 @@ And now we show them together as it's written in the code!
 
 ![A SQUARE!](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/bothTris.png)
 
-A truly beautiful square. OpenGL has built in magic to automatically know how to assemble these together, so really, the only thing you have to worry about is making those vertex positions turn into a square using the indices. OpenGL knows what to do automatically. Truly incredible to be honest with you!
+A truly beautiful square. OpenGL has built in magic and knows how to assemble these together, so really, the only thing you have to worry about is making those vertex positions turn into a square using the indices formed into two tris. OpenGL knows what to do automatically. Truly incredible!
+
+### Step 3, Normals:
+
+**Question:** I thought all of this code was normal?
+
+**Answer:** Well, normals are simply the term used to define the front of a mesh.
+
+Think of it as the face of the mesh, literally. Normals are used to calculate the visibility of parts of your mesh so that the graphics card does not have to do unnecessary work when rendering your game! It's also used for lighting calculations. You can technically work with OpenGL without using normals, but it becomes a horrible mess and I'd recommend not doing that. [If you want to read more about it, you can click this link.](https://en.wikipedia.org/wiki/Back-face_culling) It's actually fascinating.
+
+But onto the code. [At line 50 of meshBuilder.go](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L50), you can see we are telling the normals to face on the positive Z axis (it's defined as XYZ). Our plane (or square if you want to call it that) is utilizing X and Y for it's 2D alignment in the 3D space so the Z axis becomes the default plane in which the pixels are rendered on due to how 3D space works. 
+
+I'm going to show you what I mean using the actual program.
+
 
 
