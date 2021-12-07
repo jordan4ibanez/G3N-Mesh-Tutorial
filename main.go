@@ -19,6 +19,11 @@ func main() {
 	//this creates the application - pointer reference
 	var a *app.Application = app.App()
 
+	//this allows you to change the window title
+	//you can actually utilize this in your updates to change the window title
+	//to something like, health, or your FPS, or ping, or whatever you want
+	a.IWindow.(*window.GlfwWindow).SetTitle("A beautiful mesh")
+
 	//this creates a basic scene - pointer reference
 	var scene *core.Node = core.NewNode()
 
