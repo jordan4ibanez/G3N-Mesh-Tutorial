@@ -37,6 +37,7 @@ func DebugTest(scene *core.Node) {
 	)
 	//indices are the "lines" which draw the connection between the vertex dots
 	//they are drawn as triangles, even to make quads for gpu optimizations
+
 	indices.Append(
 		//tri 1
 		0, 1, 3,
@@ -90,7 +91,8 @@ func DebugTest(scene *core.Node) {
 	var myMaterial *material.Standard = material.NewStandard(math32.NewColor("White"))
 
 	//turns the 2D myTexture.png image in /textures/ into a texture that OpenGL understands
-	myTexture, error := texture.NewTexture2DFromImage("textures/myTexture.png")
+	//myTexture, error := texture.NewTexture2DFromImage("textures/myTexture.png")
+	myTexture, error := texture.NewTexture2DFromImage("textures/up.png")
 
 	//prints an error if there is one
 	if error != nil {
