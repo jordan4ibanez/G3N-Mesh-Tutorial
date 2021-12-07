@@ -25,9 +25,9 @@ On Windows.
 
 As you can see, this is extremely basic. But every program starts off extremely basic. It only matters where your imagination can and will take you with it.
 
-Question: Okay what am I looking at? Isn't this from the game Crafting Mine or something?
+**Question:** Okay what am I looking at? Isn't this from the game Crafting Mine or something?
 
-Answer: No, this is a simple .png image used as a texture material, created from 2 tris with a helper coordinate axis in G3N labeled "A beautiful mesh".
+**Answer:** No, this is a simple .png image used as a texture material, created from 2 tris with a helper coordinate axis in G3N labeled "A beautiful mesh".
 
 Okay maybe that is a bit complex to unload to someone new to this, let me make it a little bit simpler.
 
