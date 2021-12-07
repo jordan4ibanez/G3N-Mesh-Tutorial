@@ -39,7 +39,7 @@ Sadly they left off the part where a mesh usually has a material plopped on it, 
 
 Let's start off with the simplest thing in that definition, edges.
 
-In OpenGL an "edge" is a vertex position, a literal point in 3D space which is assembled into a list, otherwise known as an array. A vertex position can be by itself in a list, but that wouldn't be visible, or helpful. So we assemble them into an array. [Here is a visualization of what is happening in line 32 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L32)
+In OpenGL an "edge" is a vertex position, a literal point in 3D space which is assembled into a list, otherwise known as an array. A vertex position can be by itself in a list, but that wouldn't be visible, or helpful. So we assemble them into an array. [Here is a visualization of what is happening in line 34 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L34)
 
 ![Wow, dots, amazing](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/vertexPosition.png)
 
@@ -55,7 +55,7 @@ In OpenGL, you have your vertex positions, but those alone are not very helpful.
 
 When these dots are connected together, your graphics card can fill them in utilizing it's pixel shader cores, but that is beyond the scope of this tutorial. Just know, you need three points to connect the dots, and keep them as triangles. This will allow you to, let's say, put a color to the triangle created between those points. Or maybe you could put a texture there instead. It is up to you. But for simplicity sake, in this tutorial we will be texturing our tris.
 
-Before we get into texturing, [I will show you our two quads that we created at line 40 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L40)
+Before we get into texturing, [I will show you our two quads that we created at line 43 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L43)
 
 The first image is tri 1, the second is tri 2. Pretty simple isn't it?
 
@@ -77,7 +77,7 @@ A truly beautiful square. OpenGL has built in magic and knows how to assemble th
 
 Think of it as the face of the mesh, literally. Normals are used to calculate the visibility of parts of your mesh so that the graphics card does not have to do unnecessary work when rendering your game! It's also used for lighting calculations. You can technically work with OpenGL without using normals, but it becomes a horrible mess and I'd recommend not doing that. [If you want to read more about it, you can click this link.](https://en.wikipedia.org/wiki/Back-face_culling) It's actually fascinating.
 
-But onto the code. [At line 50 of meshBuilder.go](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L50), you can see we are telling the normals to face on the positive Z axis (it's defined as XYZ). Our plane (or square if you want to call it that) is utilizing X and Y for it's 2D alignment in the 3D space so the Z axis becomes the default plane in which the pixels are rendered on due to how 3D space works. 
+But onto the code. [At line 53 of meshBuilder.go](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L53), you can see we are telling the normals to face on the positive Z axis (it's defined as XYZ). Our plane (or square if you want to call it that) is utilizing X and Y for it's 2D alignment in the 3D space so the Z axis becomes the default plane in which the pixels are rendered on due to how 3D space works. 
 
 I'm going to show you what I mean using the actual program.
 
