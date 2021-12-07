@@ -114,11 +114,15 @@ Hopefully this example helps explain what I mean.
 
 #### A VERY IMPORTANT WARNING!
 
-You want your texture definition to start at Vertex Position 0 and end at 3. It is **ultra extremely** important to remember to rotate your Vertex Positions in 3D space instead of shifting the texture mapping points. If you have a more complex model, let's say they are at points 4 to 7. You would keep those the same and simply move Vertex Positions 4 to 7 around instead of trying to do a rightward shift of the UV mapping. This can cause you hours of extreme confusion if you try things like this and I am hoping this warning stops you from doing it. If you are in a very tight corner, literally like you are making a cube for example, you can simply rightward shift the indices of that face. This will rotate the entire face instead of the texture mapping, and it is much easier to debug.
+You want your texture definition to start at Vertex Position 0 and end at 3. It is **ultra extremely** important to remember to rotate your Vertex Positions in 3D space instead of shifting the texture mapping points. If you have a more complex model, let's say they are at points 4 to 7. You would keep those the same and simply move Vertex Positions 4 to 7 around instead of trying to do a rightward shift of the UV mapping. This can cause you hours of extreme confusion if you try things like this and I am hoping this warning stops you from doing it. 
+
+If you are in a tight corner, like you are making a cube for example, you can simply rightward shift the indices of that face. This will rotate the entire face instead of the texture mapping, and it is much easier to debug.
 
 What the heck am I talking about here with UV and indice shifting?
 
 Here is the wrong way: UV Shifting
+
+![Please no](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/doNotDoThisUVShift.png)
 
 
 
