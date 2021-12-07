@@ -110,8 +110,9 @@ Hopefully this example helps explain what I mean.
 
 ![This guy was very happy to be drawn](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/flippedUVExample.png)
 
-You want your texture definition to start at Vertex Position 0 and end at 3. Basically make it so that it goes to the points in order, 0,1,2,3. You can see this on the line 66 link above. It goes from 0, to 3. If you mess up your UV mapping, you can keep brute forcing it if you really want to, it just becomes a pain in more complex programs to do this.
+You want your texture definition to start at Vertex Position 0 and end at 3. Basically make it so that it goes to the Vertex Positions in order, 0,1,2,3. You can see this on the line 73 link above. It goes from 0, to 3. If you mess up your UV mapping, you can keep brute forcing it if you really want to, it just becomes a pain in more complex programs to do this.
 
+If your image is not mapped the way you want it to be, you can do a UV shift. This is simply done by taking the bottom coordinate and moving it to the top. This will either move the orientation 90 degrees clockwise or counter clockwise. On line 16, you can turn on the debugDirection boolean to change the texture to a simple "up" texture.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L16) Then, [on line 70, you can change the uvShift boolean to true](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L70) to make it turn 90 degrees counter clockwise. I recommend changing debugDirection and doing a run/rebuild, then changing uvShift so you can see it in action.
 
 
 
