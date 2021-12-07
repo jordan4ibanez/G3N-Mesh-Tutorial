@@ -59,3 +59,14 @@ Before we get into texturing, [I will show you our two quads that we created at 
 
 The first image is tri 1, the second is tri 2. Pretty simple isn't it?
 
+![TRI 1](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/tri1.png)
+
+![TRI 2](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/tri2.png)
+
+And now we show them together as it's written in the code!
+
+![A SQUARE!](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/bothTris.png)
+
+A truly beautiful square. OpenGL has built in magic to automatically know how to assemble these together, so really, the only thing you have to worry about is making those vertex positions turn into a square using the indices. OpenGL knows what to do automatically. Truly incredible to be honest with you!
+
+
