@@ -16,6 +16,7 @@ First of all, this is how this tutorial looks when you run:
 On Linux or
 
     $ go build; .\G3N-Mesh-Tutorial.exe
-    
+
 On Windows.
 
+![Wow, a square!](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/program.png)
