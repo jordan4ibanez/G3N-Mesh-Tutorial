@@ -12,7 +12,7 @@ import (
 	"github.com/g3n/engine/renderer"
 	"github.com/g3n/engine/window"
 
-	chunkBuilder "github.com/jordan4ibanez/G3N-Mesh-Tutorial/meshBuilder"
+	chunkBuilder "github.com/jordan4ibanez/G3N-Mesh-Tutorial/engine"
 )
 
 func main() {
