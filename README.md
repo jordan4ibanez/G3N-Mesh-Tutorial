@@ -81,5 +81,11 @@ But onto the code. [At line 50 of meshBuilder.go](https://github.com/jordan4iban
 
 I'm going to show you what I mean using the actual program.
 
+![Pretty normal looking](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/normalsShowcase.png)
+
+As you can see, the +Z face is now rendering outwards where it should be. All is good!
+
+But what happens when we turn this mesh around?
+
 
 
