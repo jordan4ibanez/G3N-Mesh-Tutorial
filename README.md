@@ -10,8 +10,12 @@
 Let's get started.
 
 First of all, this is how this tutorial looks when you run:
+
     $ go build && ./G3N-Mesh-Tutorial
+
 On Linux or
+
     $ go build; .\G3N-Mesh-Tutorial.exe
+    
 On Windows.
 
