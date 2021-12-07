@@ -105,5 +105,17 @@ Now I know what you're thinking, UV as in UV light. But UV are actually the text
 
 Texture mapping is one of the most essential parts of meshes. They allow you to do complex model wrapping to make your model look more detailed than it is. You can do some truly crazy things with texture mapping. But for our tutorial scenario, we have made a square that has a texture on it. [You can see this being applied to the geometry on line 66 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L66)
 
+#### A VERY IMPORTANT WARNING!
+
+You want your texture definition to start at Vertex Position 0 and end at 3. It is **ultra extremely** important to remember to rotate your Vertex Positions in 3D space instead of shifting the texture mapping points. If you have a more complex model, let's say they are at points 4 to 7. You would keep those the same and simply move Vertex Positions 4 to 7 around instead of trying to do a rightward shift of the UV mapping. This can cause you hours of extreme confusion if you try things like this and I am hoping this warning stops you from doing it. If you are in a very tight corner, literally like you are making a cube for example, you can simply rightward shift the indices of that face. This will rotate the entire face instead of the texture mapping, and it is much easier to debug.
+
+What the heck am I talking about here with indice shifting?
+
+
+
+
+
 Something very important I would like to get out of the way first. The texture coordinate system on the Y axis (up and down) of the texure map is inverted. Left is 0, right is 1, up is 0, down is 1. Very simple, but this could get extremely confusing if you ever forget this.
+
+Hopefully this example helps explain what I mean. 
 
