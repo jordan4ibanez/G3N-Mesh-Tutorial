@@ -33,10 +33,12 @@ Okay maybe that is a bit complex to unload to someone new to this, let me make i
 
 Verbatem from Google: A mesh is a collection of vertices, edges and faces that define the shape of a 3D object. 
 
-### Step 1, Indices:
+Sadly they left off the part where a mesh usually has a material plopped on it, but we'll get to that.
+
+### Step 1, Vertex Positions:
 
 Let's start off with the simplest thing in that definition, edges.
 
-In OpenGL an "edge" is an indice, a literal point in 3D space which is assembled into a list, otherwise known as an array. An indice can be by itself in a list, but that wouldn't be visible.
+In OpenGL an "edge" is a vertex position, a literal point in 3D space which is assembled into a list, otherwise known as an array. A vertex position can be by itself in a list, but that wouldn't be visible, or helpful. So we assemble them into an array. [Here is a visualization of what is happening in line 32 of meshBuilder.go.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L32)
 
 
