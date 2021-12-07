@@ -87,5 +87,17 @@ As you can see, the +Z face is now rendering outwards where it should be. All is
 
 But what happens when we turn this mesh around?
 
+![Oh no, it's gone](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/normalsInverseShowcase.png)
+
+As you can see, backface culling has kicked in. The GPU is basically stopping itself from rendering things it doesn't need to exactly as we told it to.
+
+**Question:** And how is this helpful at all? Wouldn't you want to see this mesh from all angles?
+
+**Answer:** Maybe in this extremely basic tutorial. But now imagine we had millions of tris in this mesh, all textured, all at different angles. If the GPU had to render them all no matter if it didn't need to, your game would basically slow to a crawl. This is why backface culling was created in OpenGL, to stop the GPU from getting worked unnecessarily.
+
+This also has an extreme impact on complex scenes that utilize lots of lighting. If you think just rendering with the pixel shader is taxing in the scenario I just described, imagine if you had a few hundred lights in the scene. Your GPU would basically melt. Backface culling is truly a marvel. 
+
+This is why normals are very important.
+
 
 
