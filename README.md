@@ -115,4 +115,3 @@ You want your texture definition to start at Vertex Position 0 and end at 3. Bas
 
 
 
-

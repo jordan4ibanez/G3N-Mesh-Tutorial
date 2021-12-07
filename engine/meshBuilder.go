@@ -13,6 +13,8 @@ import (
 	"github.com/g3n/engine/texture"
 )
 
+var debugDirection bool = false
+
 var myMesh *graphic.Mesh
 
 func DebugTest(scene *core.Node) {
@@ -64,12 +66,24 @@ func DebugTest(scene *core.Node) {
 	//0 on the y is the top of the image
 	//1 on the y is the bottom of the image
 	//(y is the second float32 in this case)
-	uvs.Append(
-		0.0, 0.0, //top left
-		0.0, 1.0, //bottom left
-		1.0, 1.0, //bottom right
-		1.0, 0.0, //top right
-	)
+
+	var uvShift bool = false
+
+	if !uvShift {
+		uvs.Append(
+			0.0, 1.0, //bottom left
+			0.0, 0.0, //top left
+			1.0, 0.0, //top right
+			1.0, 1.0, //bottom right
+		)
+	} else {
+		uvs.Append(
+			1.0, 1.0, //bottom right
+			0.0, 1.0, //bottom left
+			0.0, 0.0, //top left
+			1.0, 0.0, //top right
+		)
+	}
 
 	//apply the geometric indice data to the geometry object
 	myGeometry.SetIndices(indices)
@@ -91,8 +105,18 @@ func DebugTest(scene *core.Node) {
 	var myMaterial *material.Standard = material.NewStandard(math32.NewColor("White"))
 
 	//turns the 2D myTexture.png image in /textures/ into a texture that OpenGL understands
-	//myTexture, error := texture.NewTexture2DFromImage("textures/myTexture.png")
-	myTexture, error := texture.NewTexture2DFromImage("textures/up.png")
+
+
+	var myTexture *texture.Texture2D
+
+	var error error
+
+	if (debugDirection) {
+		myTexture, error = texture.NewTexture2DFromImage("textures/up.png")
+
+	} else {
+		myTexture, error = texture.NewTexture2DFromImage("textures/myTexture.png")
+	}
 
 	//prints an error if there is one
 	if error != nil {
