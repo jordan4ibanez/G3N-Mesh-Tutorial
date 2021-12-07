@@ -144,7 +144,7 @@ This is creating a base blank texture2D that we can "package" into our material.
 
 [Finally, on line 130, we plop that texture into the material.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L130) Now this material has a usable texture we can apply to the mesh in the next step.
 
-[On line 135, we have finally created our mesh!](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L135) The reason that this does not need explicit (var blah TYPE) or implicet (:= walrus operator) is because [on line 18 we explicitly created it](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L18) to make it modularly accessable throughout the program using the "getter" [on line 144.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L144) This is only for example though, and you can create these however you see fit.
+[On line 135, we have finally created our mesh!](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L135) The reason that this does not need explicit (var blah TYPE) or implicit (:= walrus operator) is because [on line 18 we explicitly created it](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L18) to make it modularly accessable throughout the program using the "getter" [on line 144.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L144) This is only for example though, and you can create these however you see fit.
 
 
 ### Step 7, Finally adding to scene:
