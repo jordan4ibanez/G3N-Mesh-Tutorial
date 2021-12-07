@@ -9,6 +9,8 @@ import (
 	"github.com/g3n/engine/core"
 	"github.com/g3n/engine/gls"
 	"github.com/g3n/engine/gui"
+	"github.com/g3n/engine/light"
+	"github.com/g3n/engine/math32"
 	"github.com/g3n/engine/renderer"
 	"github.com/g3n/engine/window"
 
@@ -64,6 +66,14 @@ func main() {
 
 	//this is the function that shows you how to create a mesh from scratch
 	chunkBuilder.DebugTest(scene)
+
+	//
+
+	scene.Add(light.NewAmbient(&math32.Color{1.0, 1.0, 1.0}, 0.8))
+
+	pointLight := light.NewPoint(&math32.Color{1, 1, 1}, 5.0)
+	pointLight.SetPosition(0, 0, 3)
+	scene.Add(pointLight)
 
 	a.Run(func(renderer *renderer.Renderer, deltaTime time.Duration) {
 		a.Gls().Clear(gls.DEPTH_BUFFER_BIT | gls.STENCIL_BUFFER_BIT | gls.COLOR_BUFFER_BIT)

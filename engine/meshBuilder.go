@@ -30,17 +30,12 @@ func DebugTest(scene *core.Node) {
 	normals := math32.NewArrayF32(0, 16)
 	uvs := math32.NewArrayF32(0, 16)
 
-	//positions are the "dots" which make up the mesh's vertex layout
+	//positions are the "dots" which make up the mesh's vertex layout - this is a square
 	positions.Append(
-		//tri 1
-		-0.5, 0.5, 0.0, //top left
-		-0.5, -0.5, 0.0, //bottom left
-		0.5, 0.5, 0.0, //top right
-
-		//tri 2
-		0.5, 0.5, 0.0, //top right
-		-0.5, -0.5, 0.0, //bottom left
-		0.5, -0.5, 0.0, //bottom right
+		-0.5, 0.5, 0.0,
+		-0.5, -0.5, 0.0,
+		0.5, -0.5, 0.0,
+		0.5, 0.5, 0.0,
 	)
 	//indices are the "lines" which draw the connection between the vertex dots
 	//they are drawn as triangles, even to make quads for gpu optimizations
@@ -58,6 +53,7 @@ func DebugTest(scene *core.Node) {
 		0.0, 0.0, 1.0, //all face one direction (+Z coordinate on plane of Z); invert by switching to -1.0
 		0.0, 0.0, 1.0,
 		0.0, 0.0, 1.0,
+
 		0.0, 0.0, 1.0,
 		0.0, 0.0, 1.0,
 		0.0, 0.0, 1.0,
@@ -94,9 +90,7 @@ func DebugTest(scene *core.Node) {
 	myTexture, error := texture.NewTexture2DFromImage("textures/myTexture.png")
 
 	if error != nil {
-		fmt.Println("HEY SOMETHING GOT FUCKED HERE")
 		fmt.Println(error)
-		fmt.Println("HEY SOMETHING GOT FUCKED HERE")
 	}
 
 	//we finally apply the texture to the material
