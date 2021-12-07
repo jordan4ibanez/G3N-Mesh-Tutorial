@@ -115,4 +115,42 @@ You want your texture definition to start at Vertex Position 0 and end at 3. Bas
 If your image is not mapped the way you want it to be, you can do a UV shift. This is simply done by taking the bottom coordinate and moving it to the top. This will either move the orientation 90 degrees clockwise or counter clockwise. [On line 16, you can turn on the debugDirection boolean to change the texture to a simple "up" texture.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L16) Then, [on line 70, you can change the uvShift boolean to true](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L70) to make it turn 90 degrees counter clockwise. I recommend changing debugDirection and doing a run/rebuild, then changing uvShift so you can see it in action.
 
 
+### Step 5, Finalizing the mesh geometry:
 
+So we have gotten all of our data out of the way, we have told the program what our square it is, where to draw it, how it should be facing, and how to map textures to it. What now?
+
+Well, we actually now have to get G3N to tell OpenGL what changes we made.
+
+[On line 89 through 98](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L89), we are doing this. I am going to lightly touch on this because if I go in depth, I will basically be writing a book. 
+
+First we are utilizing mygeometry.SetIndices to transfer the indice data into it. The indice data is set in the OpenGL buffer.
+
+Line 92 to line 98 is basically telling OpenGL our data and data attributes that we made, using G3N's custom C code (gls) which talks directly to it through CGo in unsafe mode. Basically, if you copy that and then use that for your geometry you do not have to worry what that's doing because any further information will confuse you pointlessly. Basically G3N was written so you don't have to worry about and get frustrated by it.
+
+This is also why this is licensed as MIT. You can copy this code and turn it into an operating system desktop environment if you really want to, it's up to you. I'm not holding you back.
+
+
+### Step 6, Materials:
+
+What is a material? Well, it's basically how a mesh looks. How shiny it is, it's refractiveness, how it disperses light, but most importantly, what texture it has. If you want to read more about materials in OpenGL you can [click this link.](https://learnopengl.com/Lighting/Materials) The only thing we're going to worry about in this tutorial is the texture.
+
+[On line 105, we create our material out of the standard material structure using white as the base color pallet.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L105) This creates an object we can utilize to UV wrap our mesh.
+
+    $ var myTexture *texture.Texture2D
+
+This is creating a base blank texture2D that we can "package" into our material. We have also created an error variable on line 112, but that is not so important right now. This basically just tells you if there was an issue finding or loading the texture. [On line 115 you can see we are utilizing NewTexture2DFromImage.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L115) Basically this is taking in the raw data of the .png image and transcoding it into raw data which OpenGL can understand.
+
+[On line 127, we are setting a custom filter.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L127) SetMagFilter() allows you to apply custom filters to textures individually to achieve the look you are going for in your game. Since this is a low poly image stretched to fill the entire mesh, we are using gls.NEAREST so it does not attempt to blend (think N64 graphics) the textures together. In higher quality textures, you might want to experiment with gls texture filters to get higher fidelity looks of your meshes.
+
+[Finally, on line 130, we plop that texture into the material.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L130) Now this material has a usable texture we can apply to the mesh in the next step.
+
+[On line 135, we have finally created our mesh!](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L135) The reason that this does not need explicit (var blah TYPE) or implicet (:= walrus operator) is because [on line 18 we explicitly created it](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L18) to make it modularly accessable throughout the program using the "getter" [on line 144.](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L144) This is only for example though, and you can create these however you see fit.
+
+
+### Step 7, Finally adding to scene:
+
+We finally got here! It's that time! We can now add this created mesh to the scene! But wait, where did that scene variable come from??
+
+[Well, if you look at the function initialization on line 20](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L20) you can see I'm explicitly requiring a *core.Node pointer in this function. This basically is directly calling on the scene pointer to add our mesh into it. Pretty simple right?
+
+That's basically it. You did it! If you followed along and you understand what's going on you should be proud! Now get out there and make something awesome!
