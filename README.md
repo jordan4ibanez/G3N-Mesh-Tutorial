@@ -111,7 +111,7 @@ As you see, this can be extremely powerful. But in very complex models, this can
 
 Pretty much, the only thing that you need to know about normals are: they should be pointing outwards if you are going to use hardware lighting with materials. This tutorial only brushes the minimum requried information to utilize G3N's hardware lighting. If you would add this code into line 76 of main.go:
 ```
-You're going to have to add this to your imports: 
+You're going to have to add this to your imports in main.go: 
 "github.com/g3n/engine/light" 
 "github.com/g3n/engine/math32"
 
