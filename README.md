@@ -75,7 +75,23 @@ A truly beautiful square. OpenGL has built in magic and knows how to assemble th
 
 **Answer:** Well, normals are simply the term used to define the front of a mesh used in lighting.
 
+Pretty much, the only thing that you need to know about normals are: they should be pointing outwards if you are going to use hardware lighting with materials. This tutorial only brushes the minimum requried information to utilize G3N's hardware lighting. If you would add this code into line 76 of main.go:
+```
+You're going to have to add this to your imports: 
+"github.com/g3n/engine/light" 
+"github.com/g3n/engine/math32"
 
+The code which is added to line 76:
+
+scene.Add(light.NewAmbient(&math32.Color{1.0, 1.0, 1.0}, 1.0))
+pointLight := light.NewPoint(&math32.Color{1, 1, 1}, 5.0)
+pointLight.SetPosition(0, 0, 3)
+scene.Add(pointLight)
+```
+When you move the mesh around with the orbital controls, you will see the point light reflecting off of the surface, acting as if it were smooth as glass. This is because this material is by default acting if it were a completely smooth, moderately reflective glass surface. You can customize it, but that's getting too in depth in simply showing you how to make a mesh in G3N.
+
+Here is an image of that. You can faintly see it reflecting. It is actually a lot easier to see when you physically move it around when it's running.
+![]()
 
 
 **Question:** And how is this helpful at all? Wouldn't you want to see this mesh from all angles?
