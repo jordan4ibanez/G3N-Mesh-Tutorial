@@ -51,8 +51,8 @@ func DebugTest(scene *core.Node) {
 	//normals are the direction that the textures are facing
 	//in this case, the "plane" (2 tris) are facing +Z
 	normals.Append(
-		0.0, 0.0, 1.0, //all face one direction (+Z coordinate on plane of Z); invert by switching to -1.0
-		0.0, 0.0, 1.0, //this is used to optimize GPU calculations, otherwise known as backface culling
+		0.0, 0.0, 1.0, //all face one direction (+Z coordinate on plane of Z)
+		0.0, 0.0, 1.0, //this is used to optimize GPU lighting calculations
 		0.0, 0.0, 1.0,
 
 		0.0, 0.0, 1.0,
