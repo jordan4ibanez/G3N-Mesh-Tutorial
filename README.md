@@ -127,7 +127,7 @@ When you move the mesh around with the orbital controls, you will see the point 
 Here is an image of that. You can faintly see it reflecting. It is actually a lot easier to see when you physically move it around when it's running.
 ![Shiny](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/UVHardwareLightingExample.png)
 
-This is why normals are very important. They can quickly get extremely complex. If you were working with a model, you really wouldn't have to worry about this because blender calculates normals for you.
+This is why normals are very important. They can quickly get extremely complex. If you were working with a model in blender, you really wouldn't have to worry about this because blender calculates normals for you.
 
 ### Step 5, UVs:
 
