@@ -73,17 +73,32 @@ A truly beautiful square. OpenGL has built in magic and knows how to assemble th
 
 Winding order is a very simple concept to grasp. Look at [the code for tri 1 which constructs it in the indices](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L45) and then look at the image for tri 1 above. Now look at [the code for tri 2 which constructs it in the indices](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L48) and then look at the image for tri 2 above. You will notice something very important. They are going counter clockwise. Basically you are telling OpenGL which direction is the face of your tri when you are creating the mesh. Pretty simple, right? 
 
+I'm going to show you what I mean using the actual program.
+
+![Pretty normal looking](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/normalsShowcase.png)
+
+As you can see, the face is now rendering outwards where it should be. All is good!
+
+But what happens when we turn this mesh around?
+
+![Oh no, it's gone](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/normalsInverseShowcase.png)
+
+As you can see, backface culling has kicked in. The GPU is basically stopping itself from rendering things it doesn't need to exactly as we told it to.
+
+
 If you want to see a very simple example of how to change the face direction of your tri when backface culling is enabled (it's enabled by default in G3N), here is a very simple thing you can do:
 
-[On line 45 of meshBuilder.go](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L45) you can invert the Vertex Position order in order to make it go clockwise. This will invert the face direction when it is transmitted to OpenGL. A hint: the new order is 3,1,0. You can simply change it to that and now only have of the square will render from the front. Here is an image of that happening:
+[On line 45 of meshBuilder.go](https://github.com/jordan4ibanez/G3N-Mesh-Tutorial/blob/main/engine/meshBuilder.go#L45) you can invert the Vertex Position winding of tri 1 in order to make it go clockwise. This will invert the face direction when it is transmitted to OpenGL. **A hint:** the new order is 3,1,0. You can simply change it to that and now only have of the square will render from the front. Here is an image of that happening:
 
 #### Front:
 
-![Two Triangles wooo]()
+![Two Triangles wooo](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/flippedWindingFront.png)
 
 #### Back:
 
-![Two Triangles wooo]()
+![Two Triangles wooo](https://raw.githubusercontent.com/jordan4ibanez/G3N-Mesh-Tutorial/main/screenshots/flippedWindingBack.png)
+
+As you see, this can be extremely powerful.
 
 
 
